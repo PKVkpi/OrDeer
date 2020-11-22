@@ -24,12 +24,16 @@ body, html {
 
 @keyframes opacityChangePink {
   from {background-color: rgba(255, 20, 147, 0.4);}
-  to {background-color: rgba(255, 20, 147, 0.6);}
+  to {background-color: rgba(255, 20, 147, 0.7);}
 }
 
 .button__join:hover {
   color: white;
-  background-color:rgba(255, 20, 147, 0.6);
+  background-color:rgba(255, 20, 147, 0.7);
   animation-name: opacityChangePink;
   animation-duration: 0.35s;
+}
+
+.link__style {
+  text-decoration: none;
 }

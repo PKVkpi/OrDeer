@@ -8,7 +8,7 @@
   position: fixed; 
   top: 0; 
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
 }
   
 .uppernav__ul {
@@ -36,11 +36,11 @@
   font-size: 16px;
   line-height: 70px;
   margin-left: 30px;
-  color: rgba(255, 255, 255, 0.3); 
+  color: rgba(255, 255, 255, 0.4); 
 }
 
 @keyframes opacityChange {
-  from {color: rgba(255, 255, 255, 0.3);}
+  from {color: rgba(255, 255, 255, 0.4);}
   to {color: rgba(255, 255, 255, 0.9);}
 }
 
