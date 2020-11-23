@@ -30,3 +30,32 @@
 .home__subtitle {
   font-size: 20px;
 }
+
+.button__join {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  background-color:rgba(255,20,147, 0.4);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  padding: 15px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  z-index: 1;
+  margin-top: 25px;
+  outline:none;
+}
+
+@keyframes opacityChangePink {
+  from {background-color: rgba(255, 20, 147, 0.4);}
+  to {background-color: rgba(255, 20, 147, 0.7);}
+}
+
+.button__join:hover {
+  color: white;
+  background-color:rgba(255, 20, 147, 0.7);
+  animation-name: opacityChangePink;
+  animation-duration: 0.35s;
+}
