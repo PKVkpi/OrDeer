@@ -10,20 +10,20 @@ export default class Restaurant extends Component {
       this.state = {
           loading: true,
           images: [],
-          region: "All",
+          district: "All",
           restaurants: [
-            {_id: 0, name: "nfhiufhdsfwqeqweqee", region: "region1", image: "../images/background-food2.jpg"},
-            {_id: 1, name: "name1", region: "region1", image: "../images/background-food2.jpg"},
-            {_id: 2, name: "name2", region: "region1", image: "../images/background-food2.jpg"},
-            {_id: 3, name: "name0", region: "region1", image: "../images/background-food2.jpg"},
-            {_id: 4, name: "name1", region: "region1", image: "../images/background-food2.jpg"},
-            {_id: 5, name: "name2", region: "region1", image: "../images/background-food2.jpg"},
-            {_id: 6, name: "name0", region: "region1", image: "../images/background-food2.jpg"},
-            {_id: 7, name: "name1", region: "region1", image: "../images/background-food2.jpg"},
-            {_id: 8, name: "name2", region: "region1", image: "../images/background-food2.jpg"},
-            {_id: 9, name: "name0", region: "region1", image: "../images/background-food2.jpg"},
-            {_id: 10, name: "name1", region: "region1", image: "../images/background-food2.jpg"},
-            {_id: 11, name: "name2", region: "region1", image: "../images/background-food2.jpg"},
+            {_id: 0, name: "nfhiufhdsfwqeqweqee", district: "district1", image: "../images/background-food2.jpg"},
+            {_id: 1, name: "name1", district: "district1", image: "../images/background-food2.jpg"},
+            {_id: 2, name: "name2", district: "district1", image: "../images/background-food2.jpg"},
+            {_id: 3, name: "name0", district: "district1", image: "../images/background-food2.jpg"},
+            {_id: 4, name: "name1", district: "district1", image: "../images/background-food2.jpg"},
+            {_id: 5, name: "name2", district: "district1", image: "../images/background-food2.jpg"},
+            {_id: 6, name: "name0", district: "district1", image: "../images/background-food2.jpg"},
+            {_id: 7, name: "name1", district: "district1", image: "../images/background-food2.jpg"},
+            {_id: 8, name: "name2", district: "district1", image: "../images/background-food2.jpg"},
+            {_id: 9, name: "name0", district: "district1", image: "../images/background-food2.jpg"},
+            {_id: 10, name: "name1", district: "district1", image: "../images/background-food2.jpg"},
+            {_id: 11, name: "name2", district: "district1", image: "../images/background-food2.jpg"},
           ],
       }
   }
@@ -33,7 +33,7 @@ export default class Restaurant extends Component {
 
     // id: this.props.menu._id,
     // name: this.props.menu.name,
-    // region: this.props.menu.region,
+    // district: this.props.menu.district,
     // image: this.props.menu.image
 }
 
@@ -47,7 +47,7 @@ export default class Restaurant extends Component {
             <ul className="restaurants__ul">
               <div className="restaurants__left">
                 <li className="restaurants__li">
-                  <div className="restaurants__region">Region: <span className="bold">{this.state.region}</span></div>
+                  <div className="restaurants__district">District: <span className="bold">{this.state.district}</span></div>
                 </li>
               </div>
               <div className="restaurants__right">

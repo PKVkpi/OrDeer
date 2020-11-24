@@ -6,6 +6,7 @@ import Signup from './components/pages/signup.component';
 import Login from './components/pages/login.component';
 import User from './components/pages/user.component';
 import Restaurants from './components/pages/restaurants.component';
+import Restaurant from './components/pages/restaurant-page.component';
 
 export default class App extends Component {
 
@@ -17,6 +18,7 @@ export default class App extends Component {
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/user" component={User} />
+            <Route exact path="/restaurants/:id" component={Restaurant} />
             <Route exact path="/restaurants" component={Restaurants} />
             <Route exact path="/" component={Home} />
           </Switch>
