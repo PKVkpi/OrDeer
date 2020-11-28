@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from '../parts/navbar.component';
-import RestaurantList from './restaurant-list.component';
+import RestaurantList from '../parts/restaurant-list.component';
 
 export default class Restaurant extends Component {
 

@@ -30,8 +30,8 @@
   padding-top: 0px;
 }
 
-.title_text {
-  background:  rgba(255, 255, 255, 0.4);
+.title__text {
+  background:  rgba(255, 255, 255, 0.6);
   height: 1px;
   margin-top: 10px;
   text-align: center;
@@ -41,8 +41,8 @@
   margin-bottom: 35px; 
 }
 
-.title_span {
-  background-color: black;  color: rgba(255, 255, 255, 0.4);
+.title__span {
+  background-color: black;  color: rgba(255, 255, 255, 0.6);
   padding: 10px;
   position: relative;
   top: -22px;
@@ -51,7 +51,7 @@
 }
 
 .restaurant__title {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 100px;
 }
 

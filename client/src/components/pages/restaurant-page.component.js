@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../parts/navbar.component';
 import Carousel from 'react-bootstrap/Carousel';
-import Button from 'react-bootstrap/Button';
+import MenuList from '../parts/menu-list.component';
 
 export default class Restaurant extends Component {
 
@@ -15,13 +15,20 @@ export default class Restaurant extends Component {
           images: [
             "https://images.pexels.com/photos/4577179/pexels-photo-4577179.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
             "https://images.pexels.com/photos/4050990/pexels-photo-4050990.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          ],
+          menu: [
+            {snacks: [{name: 'snack1', price: 100, description: 'description1', inStock: true},
+                      {name: 'snack2', price: 100, description: 'description2', inStock: false}],
+            mainDishes: [{name: 'mainDish1', price: 100, description: 'description1', inStock: true},
+                        {name: 'mainDish2', price: 100, description: 'description2', inStock: false}],
+            desserts: [{name: 'dessert1', price: 100, description: 'description1', inStock: true},
+                        {name: 'dessert2', price: 100, description: 'description2', inStock: false}],
+            drinks: [{name: 'drink1', price: 100, description: 'description1', inStock: true},
+                    {name: 'drink2', price: 100, description: 'description2', inStock: false}]
+            }
           ]
       }
 
-  }
-
-  componentDidMount() {
-    console.log(window.location.pathname);
   }
 
   CarouselImages() {
@@ -60,12 +67,13 @@ export default class Restaurant extends Component {
             <div className="restaurant__description">
               {this.state.description}
             </div>
-            <div className="title_text"><span className="title_span">Address</span></div>
+            <div className="title__text"><span className="title__span">Address</span></div>
             <div className="restaurant__description">
               {this.state.address}
             </div>
+            <div className="title__text"><span className="title__span">Menu</span></div>
+            <MenuList menu={this.state.menu}/>
           </div>
-
           {/* </div> */}
         </div>
       </div>

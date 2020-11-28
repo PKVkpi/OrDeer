@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Restaurant from "./restaurant.component";
+import Restaurant from "../pages/restaurant.component";
 
 export default class RestaurantList extends Component {
 
