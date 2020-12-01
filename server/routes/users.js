@@ -31,7 +31,7 @@ router.route('/:id').get((req, res) => {
       .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/update/:id').post((req, res) => {
+router.route('/:id').update((req, res) => {
     User.findById(req.params.id)
       .then(user => {
         user.username = req.body.username;

@@ -33,7 +33,7 @@ router.route('/:id').delete((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/update/:id').post((req, res) => {
+router.route('/:id').update((req, res) => {
   Restaraunt.findById(req.params.id)
     .then(restaraunt => {
       restaraunt.username = req.body.username;

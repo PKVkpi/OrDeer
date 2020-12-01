@@ -1,4 +1,4 @@
-const { Schema } = require("mongoose");
+const { Schema } = require('mongoose');
 const mongoose = require('mongoose');
 
 const restarauntSchema = new Schema({
@@ -9,6 +9,13 @@ const restarauntSchema = new Schema({
     description : {
         type: String,
         required: true,
+    },
+    address : {
+        type: String,
+        required: true,
+    },
+    imageURLs : {
+        type : Array
     }
 },
 {
