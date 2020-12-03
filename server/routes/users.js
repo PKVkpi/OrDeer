@@ -8,11 +8,11 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-    const username = req.body.username;
+    const name = req.body.name || null;
     const email = req.body.email;
     const password = req.body.password;
 
-  const newUser = new User({username, email, password});
+  const newUser = new User({name, email, password});
 
   newUser.save()
     .then(() => res.json('User added!'))
@@ -34,9 +34,9 @@ router.route('/:id').get((req, res) => {
 router.route('/:id').put((req, res) => {
     User.findById(req.params.id)
       .then(user => {
-        user.username = req.body.username;
-        user.email = req.body.email;
-        user.password = req.body.password;
+        user.name = req.body.name || user.name;
+        user.email = req.body.email || user.email;
+        user.password = req.body.password || user.password;
   
         user.save()
           .then(() => res.json('User updated!'))
