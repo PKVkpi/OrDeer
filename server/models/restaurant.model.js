@@ -1,5 +1,6 @@
 const { Schema } = require('mongoose');
 const mongoose = require('mongoose');
+const { schema } = require('./dish.model');
 
 const restarauntSchema = new Schema({
     name : {
@@ -14,9 +15,8 @@ const restarauntSchema = new Schema({
         type: String,
         required: true,
     },
-    imageURLs : {
-        type : Array
-    }
+    imageURLs : [String],
+    menuId : {type : Schema.Types.ObjectId}
 },
 {
     timestamps: true,

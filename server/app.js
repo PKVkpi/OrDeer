@@ -2,7 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const restarauntsRouter = require('./routes/restaraunts');
+const restaurantsRouter = require('./routes/restaurants');
+const menusRouter = require('./routes/menu');
+const dishesRouter = require('./routes/dishes');
 const usersRouter = require('./routes/users');
 const session = require('express-session');
 const passport = require('./config/passport');
@@ -36,7 +38,9 @@ connection.once('open', () =>{
     console.log("Connection with DB is successful");
 });
 
-app.use('/restaraunts', restarauntsRouter);
+app.use('/restaurants', restaurantsRouter);
+app.use('/menus', menusRouter);
+app.use('/dishes', dishesRouter);
 app.use('/users', authMiddleware.loginRequired, usersRouter);
 app.use('/auth', authRouter(passport));
 
