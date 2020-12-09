@@ -12,9 +12,8 @@ export default class Restaurant extends Component {
             id: this.props.restaurant._id,
             name: this.props.restaurant.name,
             region: this.props.restaurant.region,
-            image: this.props.restaurant.image,
+            image: this.props.restaurant.imageURLs[0],
         }
-
     }
 
     render() {
