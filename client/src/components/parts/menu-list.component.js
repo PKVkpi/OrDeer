@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import MenuItem from "./menu-item.component";
+import axios from 'axios';
+import config from '../../config/config'
+const url = config.url;
 
 export default class RestaurantList extends Component {
 
@@ -7,7 +10,7 @@ export default class RestaurantList extends Component {
         super(props);
 
         this.state = {
-          //id: this.props.menu.id,
+          dishIDs: this.props.dishIDs,
           snacks: [],
           mainDishes: [],
           desserts: [],
@@ -21,10 +24,24 @@ export default class RestaurantList extends Component {
     }
 
     componentDidMount() {
-      this.setState({snacks: this.props.menu[0].snacks});
-      this.setState({mainDishes: this.props.menu[0].mainDishes});
-      this.setState({desserts: this.props.menu[0].desserts});
-      this.setState({drinks: this.props.menu[0].drinks});
+      this.state.dishIDs.map(dishId => {
+        axios.get(url + '/dishes/' + dishId)
+          .then(dish => {
+            console.log(dish);
+            if (dish.data.type === 2)
+            {
+              this.setState({ mainDishes : this.state.mainDishes.concat(dish.data) });
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          })
+      });
+
+      // this.setState({snacks: this.props.menu[0].snacks});
+      // this.setState({mainDishes: this.props.menu[1].mainDishes});
+      // this.setState({desserts: this.props.menu[2].desserts});
+      // this.setState({drinks: this.props.menu[3].drinks});
     }
 
     SnacksList() {

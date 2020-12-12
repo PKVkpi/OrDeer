@@ -16,31 +16,16 @@ export default class Restaurant extends Component {
           district: "All",
           restaurants: [],
           loading: true
-          // restaurants: [
-          //   {_id: 0, name: "nfhiufhdsfwqeqweqee", district: "district1", image: "../images/background-food2.jpg"},
-          //   {_id: 1, name: "name1", district: "district1", image: "../images/background-food2.jpg"},
-          //   {_id: 2, name: "name2", district: "district1", image: "../images/background-food2.jpg"},
-          //   {_id: 3, name: "name0", district: "district1", image: "../images/background-food2.jpg"},
-          //   {_id: 4, name: "name1", district: "district1", image: "../images/background-food2.jpg"},
-          //   {_id: 5, name: "name2", district: "district1", image: "../images/background-food2.jpg"},
-          //   {_id: 6, name: "name0", district: "district1", image: "../images/background-food2.jpg"},
-          //   {_id: 7, name: "name1", district: "district1", image: "../images/background-food2.jpg"},
-          //   {_id: 8, name: "name2", district: "district1", image: "../images/background-food2.jpg"},
-          //   {_id: 9, name: "name0", district: "district1", image: "../images/background-food2.jpg"},
-          //   {_id: 10, name: "name1", district: "district1", image: "../images/background-food2.jpg"},
-          //   {_id: 11, name: "name2", district: "district1", image: "../images/background-food2.jpg"},
-          // ],
       }
   }
 
   componentDidMount() {
     document.title = "Restaurants";
 
-    axios.get(url + '/restaraunts/')
+    axios.get(url + '/restaurants')
       .then(restaurants => {
         console.log(restaurants.data);
         this.setState({restaurants: restaurants.data, loading: false});
-        // const id = JSON.parse(authResult.config).id;    
       })
       .catch(err => {
           console.log(err);

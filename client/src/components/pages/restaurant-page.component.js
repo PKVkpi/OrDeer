@@ -16,29 +16,73 @@ export default class Restaurant extends Component {
           address: "",
           description: "",
           images: [],
-          menu: [
-            {snacks: [{name: 'snack1', price: 100, description: 'description1', inStock: true},
-                      {name: 'snack2', price: 100, description: 'description2', inStock: false}],
-            mainDishes: [{name: 'mainDish1', price: 100, description: 'description1', inStock: true},
-                        {name: 'mainDish2', price: 100, description: 'description2', inStock: false}],
-            desserts: [{name: 'dessert1', price: 100, description: 'description1', inStock: true},
-                        {name: 'dessert2', price: 100, description: 'description2', inStock: false}],
-            drinks: [{name: 'drink1', price: 100, description: 'description1', inStock: true},
-                    {name: 'drink2', price: 100, description: 'description2', inStock: false}]
-            }
-          ],
+          dishIDs: [],
+            // {
+            //   snacks: []
+            // },
+            // {
+            //   mainDishes: []
+            // },
+            // {
+            //   desserts: []
+            // },
+            // {
+            //   drinks: []
+            // }
+            // {snacks: [{name: 'snack1', price: 100, description: 'description1', inStock: true},
+            //           {name: 'snack2', price: 100, description: 'description2', inStock: false}],
+            // mainDishes: [{name: 'mainDish1', price: 100, description: 'description1', inStock: true},
+            //             {name: 'mainDish2', price: 100, description: 'description2', inStock: false}],
+            // desserts: [{name: 'dessert1', price: 100, description: 'description1', inStock: true},
+            //             {name: 'dessert2', price: 100, description: 'description2', inStock: false}],
+            // drinks: [{name: 'drink1', price: 100, description: 'description1', inStock: true},
+            //         {name: 'drink2', price: 100, description: 'description2', inStock: false}]
+            // }
+          // ],
           loading: true
       }
-
+      // this.sortMenu = this.sortMenu.bind(this);
   }
+
+  // sortMenu(menu) {
+  //   return menu.data.dishIDs.map(dishId => {
+  //     axios.get(url + "/dishes/" + dishId)
+  //       .then(dish => {
+  //         console.log("------");
+  //         console.log(this.state.menu.mainDishes);
+  //         console.log("------");
+  //         if (dish.data.type === 2)
+  //         {
+  //           this.setState({
+  //             menu: this.state.menu.mainDishes.concat(dish.data)
+  //           });
+  //         }
+
+  //         if (dishId === menu.data.dishIDs[menu.data.dishIDs.length - 1])
+  //           this.setState({ loading: false });
+  //       })
+  //       .catch(err => {
+  //         console.log(err);
+  //       })
+  //   })
+  // }
 
   componentDidMount() {
     document.title = "Restaurants";
 
-    axios.get(url + '/restaurants/5fcd7d33922c1052b8103dd8')
+    axios.get(url + window.location.pathname)
       .then(restaurant => {
-        console.log(restaurant);
-        this.setState({loading: false});
+        this.setState({
+          name: restaurant.data.name,
+          address: restaurant.data.address,
+          description: restaurant.data.description,
+          images: restaurant.data.imageURLs
+        });
+        return axios.get(url + '/menus/' + restaurant.data.menuId);
+      })
+      .then(menu => {
+        console.log(menu.data.dishIDs);
+        this.setState({dishIDs: menu.data.dishIDs, loading: false});
       })
       .catch(err => {
           console.log(err);
@@ -87,7 +131,7 @@ export default class Restaurant extends Component {
                   {this.state.address}
                 </div>
                 <div className="title__text"><span className="title__span">Menu</span></div>
-                <MenuList menu={this.state.menu}/>
+                <MenuList dishIDs={this.state.dishIDs}/>
               </div>
             </div>
           </>
