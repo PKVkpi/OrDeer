@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 let User = require('../models/user.model');
 
 router.get('/login', function (req, res) {
+
     const data = {};
 
     data.title = 'Login';
@@ -67,6 +68,8 @@ module.exports = function (passport) {
     router.post('/login', passport.authenticate('local', {
         failureRedirect: '/auth/login',
     }), async function (req, res) {
+        const id =  req.user.id;
+        res.cookie('id', id.toString());
         res.json('logged in');
     })
 
