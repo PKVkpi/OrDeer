@@ -34,8 +34,6 @@ export default class Login extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    console.log("asd");
-
     const user = {
       email: this.state.email,
       password: this.state.password,
@@ -44,8 +42,7 @@ export default class Login extends Component {
     axios.post(url + '/auth/login', user)
       .then(authResult => {
         console.log(authResult);
-        // const id = JSON.parse(authResult.config).id;    
-        this.props.history.push("/user");   
+        this.props.history.push("/");   
       })
       .catch(err => {
           console.log(err);
