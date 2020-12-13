@@ -26,6 +26,10 @@ router.route('/:id').delete((req, res) => {
       .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/me').get((req, res) => {
+  res.json(req.user);
+});
+
 router.route('/:id').get((req, res) => {
     User.findById(req.params.id)
       .then(user => res.json(user))
@@ -46,6 +50,8 @@ router.route('/:id').put((req, res) => {
       })
       .catch(err => res.status(400).json('Error: ' + err));
   });
+
+
 
 
 
