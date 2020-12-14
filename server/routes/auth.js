@@ -68,6 +68,7 @@ module.exports = function (passport) {
     router.post('/login', passport.authenticate('local', {
         failureRedirect: '/auth/login',
     }), async function (req, res) {
+        const user = req.user;
         const id =  req.user.id;
         res.cookie('id', id.toString());
         res.json('logged in');
