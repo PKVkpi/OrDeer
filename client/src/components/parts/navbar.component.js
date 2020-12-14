@@ -1,10 +1,30 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import config from '../../config/config'
+const url = config.url;
 
 export default class Navbar extends Component {
   constructor(props) {
       super(props);
 
-      this.state = {}
+      this.state = {
+        loading: true,
+        id: "",
+        name: ""
+      }
+  }
+
+  componentDidMount() {
+    axios.post(url + '/users/me')
+      .then(authResult => {
+        console.log(authResult);
+        if (authResult) {
+          this.setState({ });
+        }
+      })
+      .catch(err => {
+          console.log(err);
+      })
   }
 
   render() {
@@ -18,8 +38,17 @@ export default class Navbar extends Component {
                 <li className="uppernav__li"><a className="uppernav__link" href="/restaurants">Restaurants</a></li>
                 <li className="uppernav__li"><a className="uppernav__link" href="/">About</a></li>
                 <li className="uppernav__li"><span className="uppernav__link" href="/">|</span></li>
-                <li className="uppernav__li"><a className="uppernav__link" href="/signup"><span className="bold">Sign up</span></a></li>
-                <li className="uppernav__li"><a className="uppernav__link" href="/login">Log in</a></li>
+
+                {this.state.loading ? 
+                  <>
+                    <li className="uppernav__li"><a className="uppernav__link" href="/signup"><span className="bold">Sign up</span></a></li>
+                    <li className="uppernav__li"><a className="uppernav__link" href="/login">Log in</a></li>
+                  </> :
+                  <>
+
+                  </>
+                }
+                
               </div>
             </ul>
         </nav>

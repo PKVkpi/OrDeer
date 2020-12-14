@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Navbar from '../parts/navbar.component';
 import RestaurantList from '../parts/restaurant-list.component';
+import axios from 'axios';
+import config from '../../config/config'
+const url = config.url;
 
 export default class Restaurant extends Component {
 
@@ -11,30 +14,22 @@ export default class Restaurant extends Component {
           loading: true,
           images: [],
           district: "All",
-          restaurants: [
-            {_id: 0, name: "nfhiufhdsfwqeqweqee", district: "district1", image: "../images/background-food2.jpg"},
-            {_id: 1, name: "name1", district: "district1", image: "../images/background-food2.jpg"},
-            {_id: 2, name: "name2", district: "district1", image: "../images/background-food2.jpg"},
-            {_id: 3, name: "name0", district: "district1", image: "../images/background-food2.jpg"},
-            {_id: 4, name: "name1", district: "district1", image: "../images/background-food2.jpg"},
-            {_id: 5, name: "name2", district: "district1", image: "../images/background-food2.jpg"},
-            {_id: 6, name: "name0", district: "district1", image: "../images/background-food2.jpg"},
-            {_id: 7, name: "name1", district: "district1", image: "../images/background-food2.jpg"},
-            {_id: 8, name: "name2", district: "district1", image: "../images/background-food2.jpg"},
-            {_id: 9, name: "name0", district: "district1", image: "../images/background-food2.jpg"},
-            {_id: 10, name: "name1", district: "district1", image: "../images/background-food2.jpg"},
-            {_id: 11, name: "name2", district: "district1", image: "../images/background-food2.jpg"},
-          ],
+          restaurants: [],
+          loading: true
       }
   }
 
   componentDidMount() {
     document.title = "Restaurants";
 
-    // id: this.props.menu._id,
-    // name: this.props.menu.name,
-    // district: this.props.menu.district,
-    // image: this.props.menu.image
+    axios.get(url + '/restaurants')
+      .then(restaurants => {
+        console.log(restaurants.data);
+        this.setState({restaurants: restaurants.data, loading: false});
+      })
+      .catch(err => {
+          console.log(err);
+      })
 }
 
   render() {
@@ -56,7 +51,10 @@ export default class Restaurant extends Component {
                 </li>
               </div>
             </ul>
-            <RestaurantList restaurants={this.state.restaurants} />
+            {this.state.loading ? "Loading..." : 
+            <>
+              <RestaurantList restaurants={this.state.restaurants} />
+            </>}
           </div>
         </div>
       </div>
