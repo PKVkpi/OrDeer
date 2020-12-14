@@ -1,22 +1,55 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import config from '../../config/config'
+const url = config.url;
 
 export default class Login extends Component {
 
   constructor(props) {
 
-      super(props);
-      this.state = {
-      }
+    super(props);
+    this.state = {
+      email: "",
+      password: ""
+    }
 
-      this.onBackClick = this.onBackClick.bind(this);
+    this.onBackClick = this.onBackClick.bind(this);
+    this.onChangeEmail = this.onChangeEmail.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onBackClick() {
     this.props.history.push("/");
   }
 
-  render() {
+  onChangeEmail(e) {
+    this.setState({ email: e.target.value });
+  }
 
+  onChangePassword(e) {
+    this.setState({ password: e.target.value });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+
+    const user = {
+      email: this.state.email,
+      password: this.state.password,
+    }
+
+    axios.post(url + '/auth/login', user, { withCredentials: true, credentials: 'include' })
+      .then(authResult => {
+        console.log(authResult);
+        this.props.history.push("/");
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  render() {
     return (
       <div className="login__background">
         <div className="login__blur">
@@ -26,9 +59,11 @@ export default class Login extends Component {
             <form onSubmit={this.onSubmit} autocomplete="off">
               <div className="login__inputs">
                 <div className="login__label">Email:</div>
-                <input type="email" name="email" className="login__input"/>
+                <input type="email" name="email" className="login__input"
+                  onChange={this.onChangeEmail} />
                 <div className="login__label">Password:</div>
-                <input type="password" name="password" className="login__input"/>
+                <input type="password" name="password" className="login__input"
+                  onChange={this.onChangePassword} />
               </div>
               <button className="login__button" type="submit">Confirm</button>
               <button className="login__button__back" onClick={this.onBackClick}>Back</button>
