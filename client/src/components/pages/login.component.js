@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import config from '../../config/config'
+import Cookies from 'js-cookie'
 const url = config.url;
 
 export default class Login extends Component {
@@ -42,6 +43,7 @@ export default class Login extends Component {
     axios.post(url + '/auth/login', user, { withCredentials: true, credentials: 'include' })
       .then(authResult => {
         console.log(authResult);
+        this.state = { }
         this.props.history.push("/");
       })
       .catch(err => {

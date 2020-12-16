@@ -4,6 +4,7 @@ import config from '../../config/config'
 const url = config.url;
 
 export default class Navbar extends Component {
+
   constructor(props) {
       super(props);
 
@@ -15,7 +16,7 @@ export default class Navbar extends Component {
   }
 
   componentDidMount() {
-    axios.post(url + '/users/me')
+    axios.get(url + '/users/me')
       .then(authResult => {
         console.log(authResult);
         if (authResult) {

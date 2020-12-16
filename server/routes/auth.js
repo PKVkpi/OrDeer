@@ -70,14 +70,15 @@ module.exports = function (passport) {
         failureRedirect: '/auth/login',
     }), async function (req, res) {
         let options = {
-            maxAge: 1000 * 60 * 15, // would expire after 15 minutes
             httpOnly: true, // The cookie only accessible by the web server
             signed: false // Indicates if the cookie should be signed
         }
 
+        const id = req.user.id;
+
         // Set cookie
-        res.cookie('cookieName', 'cookieValue', options) // options is optional
-        res.send('')
+        res.cookie('id', id.toString(), options) // options is optional
+        res.send("");
 
     })
 

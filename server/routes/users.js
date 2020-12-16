@@ -27,7 +27,11 @@ router.route('/:id').delete((req, res) => {
 });
 
 router.route('/me').get((req, res) => {
-  res.json(req.user);
+  console.log(req.cookies);
+  User.findById(req.cookies.id)
+      .then(user => res.send(user))
+      .catch(err => res.status(400).json('Error: ' + err));
+      
 });
 
 router.route('/:id').get((req, res) => {

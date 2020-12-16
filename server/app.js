@@ -42,7 +42,7 @@ connection.once('open', () => {
 app.use('/restaurants', restaurantsRouter);
 app.use('/menus', menusRouter);
 app.use('/dishes', dishesRouter);
-app.use('/users', authMiddleware.loginRequired, usersRouter);
+app.use('/users',  usersRouter);
 app.use('/auth', authRouter(passport));
 
 
