@@ -77,9 +77,8 @@ module.exports = function (passport) {
         const id = req.user.id;
 
         // Set cookie
-        res.cookie('id', id.toString(), options) // options is optional
-        res.send("");
-
+        // res.cookie('id', id.toString(), options) // options is optional
+        res.send(id.toString());
     })
 
 

@@ -131,7 +131,7 @@ export default class Restaurant extends Component {
                   {this.state.address}
                 </div>
                 <div className="title__text"><span className="title__span">Menu</span></div>
-                <MenuList dishIDs={this.state.dishIDs}/>
+                <MenuList dishIDs={this.state.dishIDs} history={this.props.history}/>
               </div>
             </div>
           </>

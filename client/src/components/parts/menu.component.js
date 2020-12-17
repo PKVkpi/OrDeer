@@ -12,7 +12,7 @@ export default class Menu extends Component {
 
   render() {
     return (
-      <div menu={this.state.menu}>{MenuList}</div>
+      <div menu={this.state.menu} history={this.props.history}>{MenuList}</div>
     )
   }
 }

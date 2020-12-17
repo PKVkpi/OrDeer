@@ -11,6 +11,7 @@ export default class RestaurantList extends Component {
 
         this.state = {
           dishIDs: this.props.dishIDs,
+          history: this.props.history,
           snacks: [],
           mainDishes: [],
           desserts: [],
@@ -48,7 +49,7 @@ export default class RestaurantList extends Component {
         return this.state.snacks.map(snack => {
             return (
                 <li className="snack__li" key={snack._id}>
-                  <MenuItem item={snack} />
+                  <MenuItem item={snack} history={this.state.history}/>
                 </li>
             )
         })
@@ -58,7 +59,7 @@ export default class RestaurantList extends Component {
       return this.state.mainDishes.map(mainDish => {
           return (
               <li className="mainDish__li" key={mainDish._id}>
-                <MenuItem item={mainDish} />
+                <MenuItem item={mainDish} history={this.state.history}/>
               </li>
           )
       })
@@ -68,7 +69,7 @@ export default class RestaurantList extends Component {
       return this.state.desserts.map(dessert => {
           return (
               <li className="dessert__li" key={dessert._id}>
-                <MenuItem item={dessert} />
+                <MenuItem item={dessert} history={this.state.history}/>
               </li>
           )
       })
@@ -78,7 +79,7 @@ export default class RestaurantList extends Component {
       return this.state.drinks.map(drink => {
           return (
               <li className="drink__li" key={drink._id}>
-                <MenuItem item={drink} />
+                <MenuItem item={drink} history={this.state.history} />
               </li>
           )
       })
@@ -86,37 +87,37 @@ export default class RestaurantList extends Component {
 
     showSnacksList() {
       let l = document.getElementById("menu__list__snacks");
-      if (l.style.display === "block") {
+      if (l.style.display === "flex") {
         l.style.display = "none";
       } else {
-        l.style.display = "block";
+        l.style.display = "flex";
       }
     }
 
     showMainDishesList() {
       let l = document.getElementById("menu__list__mainDishes");
-      if (l.style.display === "block") {
+      if (l.style.display === "flex") {
         l.style.display = "none";
       } else {
-        l.style.display = "block";
+        l.style.display = "flex";
       }
     }
 
     showDessertsList() {
       let l = document.getElementById("menu__list__desserts");
-      if (l.style.display === "block") {
+      if (l.style.display === "flex") {
         l.style.display = "none";
       } else {
-        l.style.display = "block";
+        l.style.display = "flex";
       }
     }
 
     showDrinksList() {
       let l = document.getElementById("menu__list__drinks");
-      if (l.style.display === "block") {
+      if (l.style.display === "flex") {
         l.style.display = "none";
       } else {
-        l.style.display = "block";
+        l.style.display = "flex";
       }
     }
 

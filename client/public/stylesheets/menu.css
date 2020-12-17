@@ -4,6 +4,12 @@
   margin-right: 30px;
 }
 
+.menu__list li {
+  margin-right: 20px;
+  max-width: 400px;
+  line-break: anywhere;
+}
+
 .menu__button {
   cursor: pointer;
   width: 100%;

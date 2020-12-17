@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import Cookies from 'js-cookie'
+import config from '../../config/config'
+const url = config.url;
 
 export default class Restaurant extends Component {
 
@@ -10,14 +14,35 @@ export default class Restaurant extends Component {
             name: this.props.item.name,
             description: this.props.item.description,
             price: this.props.item.price,
-            inStock: this.props.item.inStock
+            inStock: this.props.item.inStock,
+            history: this.props.history,
+            duration: 0
         }
 
         this.inCartAdd = this.inCartAdd.bind(this);
     }
 
     inCartAdd() {
-      console.log("In cart");
+      const userId = Cookies.get('id');
+
+      const mUser = {
+        cart: []
+      }
+
+      axios.get(url + "/users/" + userId)
+        .then(user => {
+          mUser.cart = user.data.cart;
+          mUser.cart.push(this.state.id);
+          return axios.put(url + "/users/" + userId, mUser,
+           { withCredentials: true, credentials: 'include' });
+        })
+        .then(res => {
+          this.setState({duration: 4000});
+        })
+        .catch(err => {
+          console.log(err);
+          this.state.history.push("/login");
+        })
     }
 
     render() {

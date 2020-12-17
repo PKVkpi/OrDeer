@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from '../parts/navbar.component';
 
-//import axios from 'axios';
-//import config from '../config/config';
-//const url = config.url;
-
 export default class Home extends Component {
 
   constructor(props) {
@@ -19,14 +15,6 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-      // document.title = "Carona";
-      // axios.get(url + window.location.pathname)
-      //     .then(res => {
-      //         this.setState({ images: res.data[0].images });
-      //     })
-      //     .catch(err => {
-      //         console.log("An error occured in componentDidMount in home.component\n", err);
-      //     })
   }
 
   onJoinClick() {
