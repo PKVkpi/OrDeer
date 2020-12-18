@@ -10,10 +10,16 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
   const name = req.body.name;
   const type = req.body.type;
+  const description = req.body.description || "";
+  const price = req.body.price;
+  const inStock = req.body.inStock;
 
   const newDish = new Dish({
     name,
-    type
+    type,
+    description,
+    price,
+    inStock
   });
 
   newDish.save()

@@ -29,10 +29,15 @@ export default class RestaurantList extends Component {
         axios.get(url + '/dishes/' + dishId)
           .then(dish => {
             console.log(dish);
-            if (dish.data.type === 2)
-            {
-              this.setState({ mainDishes : this.state.mainDishes.concat(dish.data) });
-            }
+            if (dish.data.type === 1){
+              this.setState({ snacks : this.state.snacks.concat(dish.data) });}
+            else if (dish.data.type === 2){
+              this.setState({ mainDishes : this.state.mainDishes.concat(dish.data) });}
+            else if (dish.data.type === 3){
+              this.setState({ desserts : this.state.desserts.concat(dish.data) });}
+            else if (dish.data.type === 4){
+              this.setState({ drinks : this.state.drinks.concat(dish.data) });}
+            
           })
           .catch(err => {
             console.log(err);
