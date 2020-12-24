@@ -9,6 +9,18 @@ const dishSchema = new Schema({
     type : {
         type: Number,
         required: true,
+    },
+    price : {
+        type: Number,
+        required: true,
+    },
+    description : {
+        type : String,
+        required: true,
+    },
+    inStock : {
+        type : Boolean,
+        required: true,
     }
 },
 {

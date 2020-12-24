@@ -26,14 +26,6 @@ router.route('/:id').delete((req, res) => {
       .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/me').get((req, res) => {
-  console.log(req.cookies);
-  User.findById(req.cookies.id)
-      .then(user => res.send(user))
-      .catch(err => res.status(400).json('Error: ' + err));
-      
-});
-
 router.route('/:id').get((req, res) => {
     User.findById(req.params.id)
       .then(user => res.json(user))
@@ -43,6 +35,7 @@ router.route('/:id').get((req, res) => {
 router.route('/:id').put((req, res) => {
     User.findById(req.params.id)
       .then(user => {
+        console.log(user);
         user.name = req.body.name || user.name;
         user.email = req.body.email || user.email;
         user.password = req.body.password || user.password;

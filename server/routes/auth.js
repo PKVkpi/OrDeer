@@ -69,15 +69,7 @@ module.exports = function (passport) {
     router.post('/login', passport.authenticate('local', {
         failureRedirect: '/auth/login',
     }), async function (req, res) {
-        let options = {
-            httpOnly: true, // The cookie only accessible by the web server
-            signed: false // Indicates if the cookie should be signed
-        }
-
         const id = req.user.id;
-
-        // Set cookie
-        // res.cookie('id', id.toString(), options) // options is optional
         res.send(id.toString());
     })
 

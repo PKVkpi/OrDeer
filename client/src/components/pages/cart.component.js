@@ -26,10 +26,13 @@ export default class Cart extends Component {
 
     dishes.forEach(dish => {
       for (let i = start; i < this.state.cart.length; ++i) {
+        
         if (dish._id === this.state.cart[i])
           filteredDishes.push(dish);
+        
         start += 1;
       }
+      start = 0;
     });
     this.setState({ dishes: filteredDishes });
   }
@@ -42,6 +45,7 @@ export default class Cart extends Component {
       })
       .then(dishes => {
         this.filterDishes(dishes.data);
+        console.log(this.state.dishes);
         return this.setState({ loading: false });
       })
       .catch(err => {
