@@ -35,6 +35,8 @@
 #menu__list__mainDishes {
   display: none;
   list-style-type: none;
+  flex: 1;
+  flex-wrap: wrap;
 }
 
 #menu__list__desserts {
